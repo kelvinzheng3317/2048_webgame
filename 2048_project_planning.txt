@@ -1,0 +1,47 @@
+2048 Project Planning
+
+-fixed size unless browser is really small
+-center of screen
+-score goes up everytime u make a number(so not two)
+    - +4 if you make 4, +8 if you make 8 etc
+
+-event listener for keystrokes
+-actions taken on keys w,a,s,d,and arrow keys
+-use dataset to associate divs with numbers and positions
+
+Note: the game can be made more unique and more of my own by
+replacing the numbers with something else that can "double", think:
+	-pokemon evolving when matched
+	-dot -> line -> triangle -> square
+	-tent -> house -> hotel -> skyscraper
+	-etc.
+
+
+how to handle keeping track of where numbers are?
+1. nested divs
+2. nested arrays
+
+1. nested divs
+	-each div has an id/class that gives it an "index"
+	-when doing a move, iterate through the correct id numbers
+		ex. move left goes index 0,1,2,3..., move up goes 0,4,8,12,...
+		-this can become cumbersome, how to address??
+			-let divId be a string of div + # then querySelector(divId)?
+			
+
+2. nested arrays
+	- nested array keeps track of every number and their position
+	-each move updates the array then copies the updates the screen accordingly?
+	-pro: allows for easier reuse of my C++ 2048 code
+	-con: could be tedious/slower for the webpage to reupdate the whole screen,
+		-this means changing the inner html of the grid container everytime
+			note: this could be not that bad using a formatted string??
+			
+3. COMBINING BOTH IDEAS - nested array of divs
+	-loop over divs, query selecting them and pushing them to the array
+	-then do normal array solution for 2048
+	-values of divs are simply can be either innerText or a data attribute
+		-innerText is easier
+		-data attribute will allow me to personalize the 
+		project (look at NOTE at top) easier
+			

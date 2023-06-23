@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="2048styles.css">
+    <title>2048</title>
+</head>
+<body>
+    <div class="center-all">
+
+        <div class="container-all">
+            <div class="heading">
+                <h1 class="game-title">2048</h1>
+                <div class="score">0
+                    <p>Score</p>
+                </div>
+                <div class="best-score">12
+                    <p>Best</p>
+                </div>
+            </div>
+    
+            <div class="above-bar">
+                <div>Join the tiles, get to 2048!</div>
+                <button class="new-game-button">New Game</button>
+            </div>
+            
+            <div class="center-game">
+                <div class="grid">
+                    <div class="square num2" id="00" data-num="2">2</div>
+                    <div class="square num0" id="01" data-num="0">0</div>
+                    <div class="square num0" id="02" data-num="0"></div>
+                    <div class="square num0" id="03" data-num="0"></div>
+                    <div class="square num4" id="10" data-num="4">4</div>
+                    <div class="square num8" id="00" data-num="8">8</div>
+                    <div class="square num16" id="00" data-num="16">16</div>
+                    <div class="square num32" id="00" data-num="32">32</div>
+                    <div class="square num64" id="00" data-num="64">64</div>
+                    <div class="square num128" id="00" data-num="128">128</div>
+                    <div class="square num256" id="00" data-num="256">256</div>
+                    <div class="square num1012" id="00" data-num="1012">1012</div>
+                    <div class="square num2024" id="00" data-num="2024">2024</div>
+                    <div class="square num0" id="00" data-num="0"></div>
+                    <div class="square num0" id="00" data-num="0"></div>
+                    <div class="square num0" id="00" data-num="0"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="2048gameLogic.js"></script>
+</body>
+</html>

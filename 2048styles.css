@@ -1,0 +1,158 @@
+html, body {
+    background: #faf8ef;
+    color: #776e65;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+}
+
+/* this is to center the main contents of the page */
+.center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this holds all the main contents of the page */
+.container-all { 
+    width: 600px;
+    /* background-color: burlywood; */
+    padding: 15px;
+
+}
+
+.heading {
+    display: grid;
+    grid-template-columns: 1fr 100px 100px;
+    flex: 1;
+}
+
+.game-title {
+    font-size: 60px;
+}
+
+.score, .best-score {
+    position: relative;
+    background: #bbada0;
+    padding: 15px 25px;
+    font-size: 20px;
+    height: 25px;
+    line-height: 47px;
+    font-weight: bold;
+    border-radius: 3px;
+    color: white;
+    margin: 8px 3px;
+    text-align: center;
+}
+
+.score p, .best-score p {
+    position: absolute;
+    top: -30px;
+    left: 21px;
+    right: auto;
+    color:#776e65
+}
+
+
+.above-bar {
+    display: grid;
+    grid-template-columns: 1fr, 200px;
+}
+
+.new-game-button {
+    width: 100px;
+    background: #8f7a66;
+    color: #f9f6f2;
+    padding: 0px 20px;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.center-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+}
+
+.grid {
+    background: #bbada0;
+    border-radius: 6px;
+    height: 500px;
+    width: 500px;
+    padding: 15px 0px 0px 15px;
+    display: grid;
+    grid-template-columns: 125px 125px 125px 125px;
+}
+
+.square {
+    height: 107px;
+    width: 107px;
+    /* this is the text color for all num except 2 and 4 */
+    color: rgb(249, 246, 242);
+    border-radius: 3px;
+    margin-right: 5px;
+    /* this centers the text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 65px;
+}
+
+.num0 {
+    background-color: rgba(238, 228, 218, 0.35);
+    /* opacity of 0 makes the 0 text not appear */
+    color: rgba(238, 228, 218, 0.0);
+    /* empty spaces have slightly smaller squares */
+    height: 106px;
+    width: 106px;
+}
+
+.num2 {
+    background: #faf8ef;
+    color: #776e65;
+}
+
+.num4 {
+    background-color: rgb(238, 225, 201);
+    color: #776e65;
+}
+
+.num8 {
+    background-color: rgb(243, 178, 122);
+}
+
+.num16 {
+    background-color: rgb(246, 150, 100);
+}
+
+.num32 {
+    background-color: rgb(247, 124, 95);
+}
+
+.num64 {
+    background-color: rgb(247, 95, 59);
+}
+
+.num128 {
+    background-color: rgb(237, 208, 115);
+}
+
+.num256 {
+    background-color: rgb(237, 204, 98);
+}
+
+.num1012 {
+    background-color: rgb(237, 204, 98);
+    font-size: 40px;
+}
+.num2024 {
+    background-color: rgb(255, 220, 106);
+    font-size: 40px;
+}
