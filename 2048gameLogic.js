@@ -1,3 +1,10 @@
+let score = 0;
+let bestScore = localStorage.getItem('bestScore') || 0;
+let scoreCounter = document.querySelector('.score');
+let bestScoreCounter = document.querySelector('.best-score');
+let scoreIncrementer = document.querySelector('.score-incr');
+bestScoreCounter.firstChild.data = bestScore;
+
 let grid = [];
 for (let i=0; i<4; ++i) {
     grid.push([]);
@@ -5,8 +12,6 @@ for (let i=0; i<4; ++i) {
         grid[i][j] = 0;
     }
 }
-
-console.log(grid);
 
 function hasEmptySpaces(grid) {
     /* Determines if there is still an empty square on the board */
@@ -71,9 +76,21 @@ function updateBoard(grid) {
     gameBoard.innerHTML = gridHTML;
 }
 
+function updateScore(increment) {
+    score += increment;
+    scoreCounter.firstChild.data = score;
+    if (score > bestScore) {
+        bestScore = score;
+        bestScoreCounter.firstChild.data = bestScore;
+        localStorage.setItem('bestScore', bestScore.toString());
+    }
+    console.log(bestScore);
+}
+
 function shiftLeft(grid) {
     /* will return true/false depending on wheter the move is doable, i.e. at least one block has to move positions */
     let aSquareMoved = false;  // determines if at least one change was made on the board
+    let scoreIncr = 0;
     for (let i=0; i<4; ++i) {  // iterates through rows
         let curr = 0;
         let toMerge = 0;
@@ -100,6 +117,8 @@ function shiftLeft(grid) {
                 if (toMerge < 4 && curNum == grid[i][toMerge]) {
                     curNum *= 2;
                     grid[i][toMerge] = 0;
+                    updateScore(curNum);
+                    scoreIncr += curNum;
                     aSquareMoved = true;
                 }
                 // shift the numbers
@@ -111,6 +130,15 @@ function shiftLeft(grid) {
             }
         }
     }
+    // WHY DOESN'T THIS WORK
+    // make the total incr is score briefly appear
+    // if (scoreIncr > 0) {
+    //     scoreIncrementer.innerHTML = '+' + scoreIncr;
+    //     scoreIncrementer.fadeIn();
+    //     // setTimeout(1000, () => {
+    //     //     scoreIncrementer.style.opacity = 0;
+    //     // });
+    // }
     return aSquareMoved;
 }
 
@@ -138,6 +166,7 @@ function shiftRight(grid) {
                 if (toMerge > -1 && curNum == grid[i][toMerge]) {
                     curNum *= 2;
                     grid[i][toMerge] = 0;
+                    updateScore(curNum);
                     aSquareMoved = true;
                 }
                 if (curr != j) {
@@ -179,6 +208,7 @@ function shiftUp(grid) {
                 if (toMerge < 4 && curNum == grid[toMerge][j]) {
                     curNum *= 2;
                     grid[toMerge][j] = 0;
+                    updateScore(curNum);
                     aSquareMoved = true;
                 }
                 if (curr != i) {
@@ -220,6 +250,7 @@ function shiftDown(grid) {
                 if (toMerge > -1 && curNum == grid[toMerge][j]) {
                     curNum *= 2;
                     grid[toMerge][j] = 0;
+                    updateScore(curNum);
                     aSquareMoved = true;
                 }
                 if (curr != i) {
