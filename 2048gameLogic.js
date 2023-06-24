@@ -3,14 +3,21 @@ let bestScore = localStorage.getItem('bestScore') || 0;
 let scoreCounter = document.querySelector('.score');
 let bestScoreCounter = document.querySelector('.best-score');
 let scoreIncrementer = document.querySelector('.score-incr');
-bestScoreCounter.firstChild.data = bestScore;
 
 let grid = [];
-for (let i=0; i<4; ++i) {
-    grid.push([]);
-    for (let j=0; j<4; ++j) {
-        grid[i][j] = 0;
-    }
+
+function resetGame() {
+    grid = [[0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]];
+    score = 0;
+    bestScore = localStorage.getItem('bestScore') || 0;
+    scoreCounter.firstChild.data = score;
+    bestScoreCounter.firstChild.data = bestScore;
+    generateNewSquare(grid);
+    generateNewSquare(grid);
+    updateBoard(grid);
 }
 
 function hasEmptySpaces(grid) {
@@ -84,7 +91,6 @@ function updateScore(increment) {
         bestScoreCounter.firstChild.data = bestScore;
         localStorage.setItem('bestScore', bestScore.toString());
     }
-    console.log(bestScore);
 }
 
 function shiftLeft(grid) {
@@ -268,9 +274,30 @@ function shiftDown(grid) {
     return aSquareMoved;
 }
 
+function gameOver(grid) {
+    // return false if there is still moves to be made, true if game over
+    if (hasEmptySpaces(grid)) {
+        return false;
+    } else {
+        for (let i=0; i<4; ++i) {
+            for (let j=0; j<3; ++j) {
+                if (grid[i][j] === grid[i][j+1]) {
+                    return false;
+                }
+            }
+        }
+        for (let j=0; j<4; ++j) {
+            for (let i=0; i<3; ++i) {
+                if (grid[i][j] === grid[i+1][j]) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
 function playGame(key) {
-    console.log(key);
     if (key === 'a' || key === 'ArrowLeft') {
         shiftLeft(grid);
     } else if (key === 'd' || key === 'ArrowRight') {
@@ -282,11 +309,19 @@ function playGame(key) {
     }
     generateNewSquare(grid);
     updateBoard(grid);
+    if (gameOver(grid)) {
+        let grid = document.querySelector('.grid');
+        grid.style.opacity = 0.5;
+        setTimeout(() => {
+            alert('You Lose');
+            resetGame();
+            grid.style.opacity = 1;
+        }, 1000)
+    }
 }
 
-generateNewSquare(grid);
-generateNewSquare(grid);
-updateBoard(grid);
+// initial reset sets up the game
+resetGame();
 
 document.addEventListener('keydown', (event) => {
     playGame(event.key);
