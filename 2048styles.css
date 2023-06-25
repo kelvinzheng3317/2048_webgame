@@ -14,7 +14,7 @@ html, body {
 
 /* this holds all the main contents of the page */
 .container-all { 
-    width: 600px;
+    width: 520px;
     /* background-color: burlywood; */
     padding: 15px;
 
@@ -27,7 +27,8 @@ html, body {
 }
 
 .game-title {
-    font-size: 60px;
+    font-size: 85px;
+    margin: 0px;
 }
 
 .score, .best-score {
@@ -66,10 +67,17 @@ html, body {
 
 .above-bar {
     display: grid;
-    grid-template-columns: 1fr, 200px;
+    grid-template-columns: 370px 150px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.above-bar div {
+    display: inline-block;
 }
 
 .new-game-button {
+    display: inline-block;
     width: 100px;
     background: #8f7a66;
     color: #f9f6f2;
@@ -77,7 +85,8 @@ html, body {
     border-radius: 3px;
     border: none;
     height: 40px;
-    width: 120px;
+    width: 150px;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
 }
@@ -87,7 +96,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 0px;
+    padding: 25px 0px;
 }
 
 /* .game-over {
